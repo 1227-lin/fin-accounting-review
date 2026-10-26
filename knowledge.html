@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>知识清单 · 15 章 · 中级财务会计学</title>
+<meta name="description" content="中级财务会计学 15 章知识清单：大白话概念、必背分录模板、易错点、自测题。">
+<meta name="theme-color" content="#f7f4ee">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2314614f'/><text x='50' y='68' font-size='52' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle'>会</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="knowledge">
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">会</span><span>中级财务会计学</span></a>
+    <nav class="nav">
+      <a href="index.html" data-nav="home">首页</a>
+      <a href="knowledge.html" data-nav="knowledge">知识清单</a>
+      <a href="plan.html" data-nav="plan">计划表</a>
+      <a href="cheat.html" data-nav="cheat">考前速查</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero narrow" style="padding:36px 0 10px">
+    <div class="eyebrow">Knowledge Map</div>
+    <h1 style="font-size:clamp(26px,4vw,38px)">知识清单 · 15 章</h1>
+    <p class="lede" style="margin-bottom:8px">
+      每章固定四块：<strong>核心概念（人话版）</strong> → <strong>必背分录模板</strong> → <strong>踩过的坑</strong> → <strong>自测题</strong>。
+      先看"一句话"，再看概念，最后闭卷写分录。圆点指难度，黄色标高频。
+    </p>
+  </section>
+
+  <div class="toolbar">
+    <input class="search" id="chSearch" type="search" placeholder="搜一个词试试：存货跌价 / 权益法 / 资本化 / 坏账…" autocomplete="off">
+    <button class="btn" id="btnOpenAll" type="button">全部展开</button>
+    <button class="btn" id="btnCloseAll" type="button">全部收起</button>
+    <button class="btn" data-print type="button">打印</button>
+  </div>
+
+  <div class="progress-wrap" style="margin:0 0 18px">
+    <span>掌握进度</span>
+    <span class="bar"><i data-bar="chapter"></i></span>
+    <b data-count="chapter" style="color:var(--green-deep)">0 / 15 章</b>
+  </div>
+
+  <div class="pill-row" id="chChips" style="margin-bottom:22px"></div>
+
+  <div id="chapterList"></div>
+
+  <div class="empty hide" id="chEmpty">
+    没搜到。换个更短的词试试，比如"跌价""合并""摊销"。
+  </div>
+
+  <div class="note" style="margin-top:26px">
+    <b>关于难度和权重：</b>难度圆点是最难那个知识点的难度，不是整章的平均难度；分值权重是经验估值，用来决定"时间往哪投"，不是考纲原话。
+    如果老师划过重点，以老师为准——老师划的，才是真的重点。
+  </div>
+
+  <footer>
+    <p><b>教材：</b>潘煜双 · 崔晓钟 主编《中级财务会计学》（第四版）· 东北财经大学出版社</p>
+    <p>内容按教材章节结构与现行企业会计准则整理，个别表述以教材、老师课堂讲授和教务通知为准。</p>
+  </footer>
+
+</main>
+
+<a class="back-top" id="backTop" href="#" aria-label="回到顶部">↑</a>
+
+<script src="data/site.js"></script>
+<script src="data/ch01-05.js"></script>
+<script src="data/ch06-10.js"></script>
+<script src="data/ch11-15.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

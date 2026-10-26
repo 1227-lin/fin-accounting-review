@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>74 天计划表 · 中级财务会计学</title>
+<meta name="description" content="从中秋后到考前的 74 天复习计划：11 个阶段、每周目标、每天任务，勾选即保存。">
+<meta name="theme-color" content="#f7f4ee">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2314614f'/><text x='50' y='68' font-size='52' font-family='sans-serif' font-weight='bold' fill='white' text-anchor='middle'>计</text></svg>">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="plan">
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">会</span><span>中级财务会计学</span></a>
+    <nav class="nav">
+      <a href="index.html" data-nav="home">首页</a>
+      <a href="knowledge.html" data-nav="knowledge">知识清单</a>
+      <a href="plan.html" data-nav="plan">计划表</a>
+      <a href="cheat.html" data-nav="cheat">考前速查</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero narrow" style="padding:36px 0 10px">
+    <div class="eyebrow">74 Days · 11 Weeks</div>
+    <h1 style="font-size:clamp(26px,4vw,38px)">74 天复习计划</h1>
+    <p class="lede" style="margin-bottom:10px">
+      从 <strong>2026-10-26</strong> 排到 <strong>2027-01-08</strong>。原则只有一条：<strong>由易到难、先拿稳能拿的分</strong>。
+      每天任务按 2–3 小时设计（含 20 分钟分录默写），周末留复盘。勾选会自动保存，换天打开还在。
+    </p>
+  </section>
+
+  <div class="toolbar">
+    <span style="font-size:13.5px;color:var(--ink-3)">任务进度</span>
+    <span class="bar" style="max-width:220px"><i data-bar="plan"></i></span>
+    <b data-count="plan" style="font-size:13.5px;color:var(--green-deep)">0 / 74 天</b>
+    <span style="flex:1"></span>
+    <button class="btn" data-print type="button">打印计划</button>
+    <button class="btn" type="button" onclick="FA.reset()">清空进度</button>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <h2>每天的三件小事</h2>
+      <span class="sub">比"今天学了 3 小时"更重要的是这三件</span>
+    </div>
+    <div class="grid grid-3" id="habitList"></div>
+  </section>
+
+  <div id="planList"></div>
+
+  <div class="note" style="margin-top:26px">
+    <b>落后了怎么办：</b>不要补。直接把进度往后顺，把"复盘日"的内容压缩一半。
+    复习最怕的不是慢，是"为了追进度跳过自测"——那样等于白学。
+    如果只剩两周，先砍掉第 9 章（非货币性资产交换）和第 15 章的后半段，把资产篇保下来。
+  </div>
+
+  <footer>
+    <p><b>教材：</b>潘煜双 · 崔晓钟 主编《中级财务会计学》（第四版）· 东北财经大学出版社</p>
+    <p>计划按"考试日 = 元旦后一周"倒排，日期由站点自动推算；考试时间调整后，改 <code>data/site.js</code> 里的 <code>examISO</code> 即可。</p>
+  </footer>
+
+</main>
+
+<a class="back-top" id="backTop" href="#" aria-label="回到顶部">↑</a>
+
+<script src="data/site.js"></script>
+<script src="data/plan.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
