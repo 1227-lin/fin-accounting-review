@@ -108,7 +108,7 @@
       const now = new Date();
       let ms = EXAM - now;
       if (ms < 0) ms = 0;
-      const days = Math.floor(ms / 86400000);
+      const days = Math.ceil(ms / 86400000);
       const hours = Math.floor((ms % 86400000) / 3600000);
       const mins = Math.floor((ms % 3600000) / 60000);
       const ps = getPlanState();
@@ -162,8 +162,7 @@
       '<div class="sub-h">今天该做什么 · 第 ' + (todayIdx + 1) + ' 天</div>' +
       '<h2>' + fmtMD(d.date) + ' ' + WD[d.date.getDay()] + ' · ' + d.weekTheme + '</h2>' +
       '<p class="t-meta">' + d.phaseTitle + ' · 第 ' + d.weekNo + ' 周（' + fmtMD(wStart) + '–' + fmtMD(wEnd) + '）' + (d.hours ? ' · ' + d.hours : '') + '</p>' +
-      '<div class="day"><div class="day-lab"><b>' + fmtMD(d.date) + '</b>' + WD[d.date.getDay()] + '</div>' +
-      '<label class="check"><input type="checkbox" data-k="' + key + '"' + checked + '><span class="box"></span>' +
+      '<div class="day" style="border-bottom:0"><label class="check"><input type="checkbox" data-k="' + key + '"' + checked + '><span class="box"></span>' +
       '<span class="day-txt">' + d.t + (d.d ? '<em>' + d.d + '</em>' : '') + '</span></label></div>' +
       '<p style="margin-top:14px;font-size:13.5px"><a href="plan.html">查看完整计划表 →</a> · <a href="knowledge.html">对应章节的知识清单 →</a></p>';
 
@@ -341,6 +340,14 @@
             (isToday ? '今天 · ' : '') + d.t + (d.d ? '<em>' + d.d + '</em>' : '') + '</span></label></div>';
         }
 
+        if (w.exam) {
+          const ed = addDays(endD, 1);
+          days += '<div class="day exam-day">' +
+            '<div class="day-lab"><b>' + fmtMD(ed) + '</b>' + WD[ed.getDay()] + '</div>' +
+            '<div class="day-txt"><span class="tag hot">考试日</span> ' + w.exam.t +
+            (w.exam.d ? '<em>' + w.exam.d + '</em>' : '') + '</div></div>';
+        }
+
         html += '<details class="week' + (isNow ? ' now' : '') + '"' + (isNow ? ' open' : '') + '>' +
           '<summary class="week-head">' +
           '<span class="week-no">第 ' + weekNo + ' 周</span>' +
@@ -382,7 +389,7 @@
             return '<td' + (i === 0 ? ' class="k"' : '') + '>' + cell + '</td>';
           }).join('') + '</tr>';
         }).join('');
-        body += '<table class="cheat-table" style="margin:6px 0 18px">' + head + rows + '</table>';
+        body += '<div class="table-scroll"><table class="cheat-table" style="margin:6px 0 18px">' + head + rows + '</table></div>';
       });
 
       (sec.formulas || []).forEach(function (f) {

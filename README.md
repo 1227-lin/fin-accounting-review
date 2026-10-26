@@ -13,10 +13,10 @@
 ## 在线访问
 
 ```
-https://<你的用户名>.github.io/fin-accounting-review/
+https://1227-lin.github.io/fin-accounting-review/
 ```
 
-（部署到 GitHub Pages 后把上面这行换成真实地址，并写进仓库的 About。）
+
 
 ## 本地打开
 

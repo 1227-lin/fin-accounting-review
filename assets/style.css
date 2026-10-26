@@ -32,6 +32,11 @@
 
 html { scroll-behavior: smooth; scroll-padding-top: 78px; }
 
+html, body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
   background: var(--paper);
@@ -39,6 +44,7 @@ body {
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.75;
+  overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -174,6 +180,7 @@ h1 .thin { color: var(--ink-3); font-weight: 400; }
   padding: 14px 12px;
   text-align: center;
   box-shadow: var(--shadow);
+  min-width: 0;
 }
 .cd-num {
   font-size: 30px;
@@ -205,6 +212,14 @@ h1 .thin { color: var(--ink-3); font-weight: 400; }
 .grid-2 { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 .grid-4 { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.grid-tiles { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+
+/* 横向可滚动的表格容器 */
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
 
 /* 入口卡 */
 .entry {
@@ -228,9 +243,11 @@ h1 .thin { color: var(--ink-3); font-weight: 400; }
   border-radius: 10px;
   display: grid; place-items: center;
   background: var(--green-soft);
-  color: var(--green);
-  font-size: 17px;
+  color: var(--green-deep);
+  font-size: 15px;
+  font-weight: 800;
   margin-bottom: 12px;
+  letter-spacing: 0;
 }
 .entry h3 { margin: 0 0 6px; font-size: 17px; letter-spacing: -.2px; }
 .entry p { margin: 0; font-size: 14px; color: var(--ink-3); line-height: 1.6; }
@@ -612,6 +629,7 @@ h1 .thin { color: var(--ink-3); font-weight: 400; }
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 .phase-badge {
   flex: none;
@@ -623,8 +641,8 @@ h1 .thin { color: var(--ink-3); font-weight: 400; }
   background: var(--green);
   color: #fff;
 }
-.phase h2 { font-size: 19px; margin: 0; letter-spacing: -.3px; }
-.phase .phase-note { font-size: 13.5px; color: var(--ink-3); }
+.phase h2 { font-size: 19px; margin: 0; letter-spacing: -.3px; flex: none; white-space: nowrap; }
+.phase .phase-note { font-size: 13.5px; color: var(--ink-3); flex: 1 1 240px; min-width: 0; }
 
 .week {
   background: var(--card);
@@ -691,6 +709,15 @@ h1 .thin { color: var(--ink-3); font-weight: 400; }
 .day-lab b { display: block; color: var(--ink-2); font-size: 13px; }
 .day-txt { flex: 1; font-size: 14.8px; line-height: 1.7; }
 .day-txt em { font-style: normal; color: var(--ink-3); font-size: 13px; display: block; margin-top: 2px; }
+
+/* 考试日高亮行 */
+.day.exam-day {
+  background: linear-gradient(90deg, rgba(180, 83, 9, .08), rgba(180, 83, 9, 0) 70%);
+  border-radius: 9px;
+  padding-left: 6px;
+  padding-right: 8px;
+}
+.day.exam-day .day-txt { font-weight: 600; }
 
 /* 自定义勾选框 */
 .check { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
@@ -872,12 +899,24 @@ mark {
 /* ================= 响应式 ================= */
 @media (max-width: 640px) {
   .wrap { padding: 0 14px 80px; }
-  .topbar-inner { padding: 8px 14px; gap: 8px; }
+  .topbar-inner { padding: 8px 14px; gap: 8px; row-gap: 4px; }
   .brand { font-size: 14px; }
+  .nav {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+  .nav::-webkit-scrollbar { display: none; }
   .nav a { padding: 5px 10px; font-size: 13.5px; }
-  .hero { padding: 34px 0 20px; }
+  .hero { padding: 30px 0 20px; }
+  .countdown { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-tiles { grid-template-columns: 1fr; }
   .card { padding: 18px 16px; }
-  .ch-head { padding: 14px 15px; }
+  .ch-head { padding: 14px 15px; gap: 10px; }
   .ch-body { padding: 0 15px 18px; }
   .week-head { padding: 12px 15px; gap: 9px; flex-wrap: wrap; }
   .week-body { padding: 4px 15px 13px; }
@@ -887,4 +926,5 @@ mark {
   .cheat-table { font-size: 13px; }
   .cheat-table th, .cheat-table td { padding: 8px 9px; }
   .toolbar { top: 0; }
+  .concept { grid-template-columns: 1fr; }
 }
